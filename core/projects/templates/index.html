@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Дані з таблиць</title>
+</head>
+
+<body>
+  <h1>Project Managment</h1>
+  <h1><i style='color:green'>Музиченко Анастасія Анатоліївна</i></h1>
+
+  <h2>Помилки</h2>
+  <table border="1">
+    <tr>
+      <th>ID</th>
+      <th>Опис</th>
+      <th>Дата надходження</th>
+      <th>Рівень</th>
+      <th>Категорія</th>
+      <th>Джерело</th>
+    </tr>
+    {% for error in errors %}
+    <tr>
+      <td>{{ error.id }}</td>
+      <td>{{ error.description }}</td>
+      <td>{{ error.received_date }}</td>
+      <td>{{ error.error_level }}</td>
+      <td>{{ error.category }}</td>
+      <td>{{ error.source }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+
+  <h2>Програмісти</h2>
+  <table border="1">
+    <tr>
+      <th>ID</th>
+      <th>Прізвище</th>
+      <th>Ім'я</th>
+      <th>Телефон</th>
+    </tr>
+    {% for programmer in programmers %}
+    <tr>
+      <td>{{ programmer.id }}</td>
+      <td>{{ programmer.last_name }}</td>
+      <td>{{ programmer.first_name }}</td>
+      <td>{{ programmer.phone }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+
+  <h2>Виправлення</h2>
+  <table border="1">
+    <tr>
+      <th>ID</th>
+      <th>Код помилки</th>
+      <th>Дата початку</th>
+      <th>Тривалість</th>
+      <th>Код програміста</th>
+      <th>Вартість за день</th>
+    </tr>
+    {% for fix in fixes %}
+    <tr>
+      <td>{{ fix.id }}</td>
+      <td>{{ fix.error.id }}</td>
+      <td>{{ fix.start_date }}</td>
+      <td>{{ fix.duration }}</td>
+      <td>{{ fix.programmer.id }}</td>
+      <td>{{ fix.daily_rate }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</body>
+
+</html>
